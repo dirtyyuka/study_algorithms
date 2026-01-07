@@ -1,0 +1,206 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 15px 10px;
+}
+
+li,
+ol,
+p,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  padding: 0 350px;
+  margin: 0;
+  flex-grow: 1;
+  list-style-type: none;
+}
+
+nav ul div {
+  padding: 15px 0;
+  display: flex;
+  gap: 15px;
+  align-items: start;
+  border-bottom: 1px solid #e0e0e0;
+}
+nav ul li a,
+.container p {
+  text-decoration: none;
+  color: black;
+  opacity: 0.6;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+nav ul li a:hover,
+.container p:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 25px 350px;
+  gap: 75px;
+}
+
+main h2 {
+  margin: 0;
+  font-size: 42px;
+  line-height: 48px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.container ol {
+  margin-left: 25px;
+  font-size: 22px;
+  line-height: 28px;
+  opacity: 0.8;
+}
+
+.container.first ol {
+  column-count: 2;
+}
+
+.container ol li {
+  margin-bottom: 15px;
+}
+
+.container ol li a {
+  text-decoration: none;
+  color: black;
+  opacity: 0.8;
+}
+
+.container ol li a:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+.container p {
+  align-self: start;
+  max-width: fit-content;
+}
+
+.container p a {
+  text-decoration: none;
+  color: black;
+  opacity: 0.8;
+}
+
+.container p a:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 0 350px;
+}
+
+footer p {
+  padding-top: 25px;
+  text-align: center;
+  flex-grow: 1;
+  border-top: 2px solid #cdcdcd;
+  opacity: 0.6;
+}
+
+/* Algorithm Page Styles */
+.algo-page {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#diagram-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f8f7f6;
+  border: 1px solid #dad6cf;
+}
+
+#diagram-container svg {
+  width: 80%;
+  height: auto;
+}
+
+.diagram-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.diagram-controls button {
+  background-color: #ffffff;
+  border: none;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.diagram-controls button:hover {
+  cursor: pointer;
+  text-decoration-line: underline;
+}
+
+.algo-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.algo-content ol {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  list-style-type: none;
+  border-bottom: 1px solid #cdcdcd;
+  padding-bottom: 10px;
+}
+
+.algo-content ol li {
+  max-width: 100%;
+  margin: 0;
+  margin-right: 15px;
+  font-size: 22px;
+  line-height: 28px;
+  color: #3b3b3b;
+  font-weight: 600;
+  opacity: 0.45;
+}
+
+.algo-content ol li:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.algo-content ol li.active {
+  font-weight: normal;
+  opacity: 1;
+}
+
+.algo-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 18px;
+}
+
+.algo-content p {
+  font-size: 18px;
+}

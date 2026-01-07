@@ -1,0 +1,56 @@
+{% extends "base.njk" %}
+{% block content %}
+    <article class="algo-page">
+        <div id="diagram-container">
+            {% include "src/assets/diagrams/" + diagramScenes[0] %}
+        </div>
+        <nav class="diagram-controls">
+            <button type="button" id="prev-scene" aria-label="Previous Diagram Scene">← Previous</button>
+            <button type="button" id="next-scene" aria-label="Next Diagram Scene">Next →</button>
+        </nav>
+        <div class="algo-content">
+            {{ content | safe }}
+        </div>
+        <script>
+            /* h3 */
+            const items = document.querySelectorAll('.algo-content ol > li');
+            if (items.length) {
+                items[0].classList.add('active');
+            }
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    items.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+            /* Diagram Scene Navigation */
+            const scenes = {{ diagramScenes | dump | safe }};
+            const title = {{ title | dump | safe }};
+            let current = 0;
+            const img = document.querySelector('svg')
+            const prevBtn = document.getElementById('prev-scene');
+            const nextBtn = document.getElementById('next-scene');
+            function updateScene() {
+                img.src = "/assets/diagrams/" + scenes[current];
+                img.alt = title + " step " + (
+                    current + 1
+                );
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current === scenes.length - 1;
+            }
+            prevBtn.addEventListener('click', () => {
+                if (current > 0) {
+                    current--;
+                    updateScene();
+                }
+            });
+            nextBtn.addEventListener('click', () => {
+                if (current < scenes.length - 1) {
+                    current++;
+                    updateScene();
+                }
+            });
+            updateScene();
+        </script>
+    </article>
+{% endblock %}
