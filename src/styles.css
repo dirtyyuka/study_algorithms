@@ -135,7 +135,7 @@ footer p {
   border: 1px solid #dad6cf;
 }
 
-#diagram-container svg {
+#diagram-container #diagram {
   width: 80%;
   height: auto;
 }
@@ -203,4 +203,65 @@ footer p {
 
 .algo-content p {
   font-size: 18px;
+}
+
+/* Block code */
+.code-block {
+  display: flex;
+  flex-direction: column;
+}
+.code-tabs {
+  border: 1px solid #cacaca;
+  border-bottom: none;
+
+}
+
+.code-tabs ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+
+.code-tabs ul li {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.75rem 2rem;
+  font-size: 14px;
+  line-height: 18px;
+  text-decoration: none;
+  border-right: 1px solid #dcdcdc;
+}
+
+.code-tabs ul li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+pre {
+    border: 1px solid #dcdcdc;
+    padding: 1.5rem;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.shiki {
+  margin: 0;
+}
+
+/* Inline code */
+code {
+    background: rgb(109, 110, 111);
+    color: #e5e7eb;
+    padding: 0.2em 0.4em;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+/* Prevent inline styles affecting block code */
+pre code {
+  color: #000;
+    background: none;
+    padding: 0;
+    font-size: inherit;
 }

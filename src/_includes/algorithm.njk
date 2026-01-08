@@ -2,7 +2,11 @@
 {% block content %}
     <article class="algo-page">
         <div id="diagram-container">
-            {% include "src/assets/diagrams/" + diagramScenes[0] %}
+            <img
+        id="diagram"
+        src="/assets/diagrams/{{ diagramScenes[0] }}"
+        alt="{{ title }} step 1"
+    />
         </div>
         <nav class="diagram-controls">
             <button type="button" id="prev-scene" aria-label="Previous Diagram Scene">← Previous</button>
@@ -27,7 +31,7 @@
             const scenes = {{ diagramScenes | dump | safe }};
             const title = {{ title | dump | safe }};
             let current = 0;
-            const img = document.querySelector('svg')
+            const img = document.getElementById('diagram')
             const prevBtn = document.getElementById('prev-scene');
             const nextBtn = document.getElementById('next-scene');
             function updateScene() {
@@ -35,7 +39,7 @@
                 img.alt = title + " step " + (
                     current + 1
                 );
-                prevBtn.disabled = current === 0;
+                prevBtn.disabled = current === 0
                 nextBtn.disabled = current === scenes.length - 1;
             }
             prevBtn.addEventListener('click', () => {
@@ -51,6 +55,38 @@
                 }
             });
             updateScene();
+
+            /* handle code snippets */
+            document.querySelectorAll(".code-block").forEach(block => {
+                // Get tabs and snippets **only from inside this specific block**
+                const tabs = block.querySelectorAll(".code-tabs li");
+                const snippets = Array.from(block.querySelectorAll(".shiki"));
+
+                // Make sure we have matching number of tabs and snippets
+                if (tabs.length !== snippets.length) {
+                    console.warn("Number of tabs and code snippets don't match in a code-block!");
+                    return;
+                }
+
+                tabs.forEach((tab, index) => {
+                    tab.addEventListener("click", () => {
+                    // Remove active class from tabs in *this block only*
+                        tabs.forEach(t => t.classList.remove("active"));
+                        tab.classList.add("active");
+
+                        // Show/hide snippets in *this block only*
+                        snippets.forEach((snippet, i) => {
+                            snippet.style.display = i === index ? "block" : "none";
+                        });
+                    });
+                });
+
+                // Activate first tab by default (only for this block)
+                if (tabs.length > 0) {
+                    tabs[0].click();
+                }
+                });
+            
         </script>
     </article>
 {% endblock %}
