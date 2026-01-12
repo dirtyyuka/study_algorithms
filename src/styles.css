@@ -265,3 +265,125 @@ pre code {
     padding: 0;
     font-size: inherit;
 }
+
+/* media queries */
+@media (max-width: 1600px) {
+  nav ul {
+    padding: 0 200px;
+  }
+
+  main {
+    padding: 25px 200px;
+  }
+
+  .container h2 {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .container ol{
+    column-gap: 15rem;
+  }
+
+  .container ol li {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  footer {
+    padding: 0 200px;
+  }
+}
+
+@media (max-width: 1200px) {
+  nav ul {
+    padding: 0 100px;
+  }
+
+  main {
+    padding: 25px 100px;
+  }
+
+  .container ol{
+    column-gap: 5rem;
+  }
+
+  .container ol li {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  footer {
+    padding: 0 100px;
+  }
+}
+
+/* small screens */
+@media (max-width: 700px) {
+  body {
+    padding: 15px 5px;
+  }
+
+  nav ul {
+    padding: 0 25px;
+  }
+
+  main {
+    padding: 25px 25px;
+  }
+
+  main h2, .container h2 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .container h2 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .container.first ol{
+    column-count: 1;
+  }
+
+  .container ol li {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .algo-content ol li {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .algo-content p, span {
+    font-size: 16px;
+  }
+
+  footer {
+    padding: 0 25px;
+  }
+}
+
+@media (max-width: 456px) {
+  main h2, .container h2 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .container ol li {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .algo-content ol li {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .algo-content p, span {
+    font-size: 14px;
+    line-height: 20px; 
+  }
+}
+/* end media queries */

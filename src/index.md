@@ -13,8 +13,8 @@ layout: "home.njk"
 4. [Prefix Sum](/algorithms/prefix-sum/)
 5. [Dynamic Programming](/algorithms/dynamic-programming/)
 6. [Union-Find](/algorithms/union-find/)
-7. [Knuth-Morris-Pratt (KMP)](/algorithms/kmp/)
-8. [Segment Trees](/algorithms/segment-trees/)
+7. [Floyd Cycle Detection](/algorithms/floyd-cycle-detection/)
+8. [Kadane's Algorithm](/algorithms/segment-trees/)
 9. [Minimum Spanning Tree](/algorithms/mst/)
 10. [Backtracking](/algorithms/backtracking/)
 
