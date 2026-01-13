@@ -1,4 +1,6 @@
 const { createHighlighter } = require("shiki");
+const markdownIt = require("markdown-it");
+const markdownItKatex = require("markdown-it-katex");
 
 let highlighter = null; // ← will be set once and kept forever
 
@@ -30,9 +32,17 @@ module.exports = function (eleventyConfig) {
           // Now safe: highlighter is already resolved → synchronous call!
           return highlighter.codeToHtml(code, { lang, theme });
         },
+      }),
+      mdLib.use(markdownItKatex, {
+        throwOnError: false,
+        errorColor: "#cc0000",
       });
     });
   });
+
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/katex/dist/katex.min.css": "katex.css"
+  })
 
   return {
     dir: {

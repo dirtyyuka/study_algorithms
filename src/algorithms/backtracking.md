@@ -31,7 +31,15 @@ Where backtracking finds its usage is when you require knowing all the different
 
 I'll show the algorithm being using in the <a href="https://leetcode.com/problems/binary-tree-paths/?envType=problem-list-v2&envId=backtracking"> leetcode problem 257 </a> which requires us to find all paths to leaf nodes in the tree, leaf nodes being nodes that don't have any child nodes. If you notice, this problem requires us to try all possible paths and the base case being when a leaf node is encountered, you store the path and return. So this question is perfect for a backtracking implementation, as it checks the required boxes. This also uses DFS, which if you're not familiar with, you should learn about it.
 
-```python
+<div class="code-block">
+  <div class="code-tabs">
+    <ul>
+      <li>Python</li>
+      <li>Java</li>
+    </ul>
+  </div>
+
+  ```python
 def binaryTreePaths(root: Optional[TreeNode]) -> List[str]:
     res = []
     def backtrack(node, path):
@@ -53,12 +61,48 @@ def binaryTreePaths(root: Optional[TreeNode]) -> List[str]:
             path.append("->"+str(node.right.val))
             backtrack(node.right, path)
             path.pop()
-    
+
     backtrack(root, [str(root.val)])
     return res
 
-binaryTreePaths(root) #Expected output: [1->4->2, 1->8->7]
-```
+print(binaryTreePaths(root)) #Expected output: [1->4->2, 1->8->7]
+
+  ```
+
+  ```java
+class Backtracking {
+    public List<String> binaryTreePaths(TreeNode root) {
+        List<String> res = new ArrayList<>();
+        if (root == null) return res;
+
+        backtrack(root, String.valueOf(root.val), res);
+        return res;
+    }
+
+    private void backtrack(TreeNode node, String path, List<String> res) {
+        // leaf node
+        if (node.left == null && node.right == null) {
+            res.add(path);
+            return;
+        }
+
+        if (node.left != null) {
+            backtrack(node.left, path + "->" + node.left.val, res);
+        }
+
+        if (node.right != null) {
+            backtrack(node.right, path + "->" + node.right.val, res);
+        }
+    }
+
+    public static void main(String[] args) {
+        Backtracking btrack = new Backtrack()
+        System.out.println(btrack.binaryTreePaths(root)) // Expected output: [1->4->2, 1->8->7]
+    }
+}
+  ```
+</div>
+
 
 You don't need to worry about understanding the node class if you find it confusing. The only thing you need to understand is where the recursive call is happening and the base conditions. I'll dive into base conditions now, because this is the most vital part about this algorithm. These vary upon the problem, therefore it's important for you to create a base condition that follows the rule of the problem. 
 

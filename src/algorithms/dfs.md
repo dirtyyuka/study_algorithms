@@ -29,25 +29,58 @@ DFS prioritizes going deep into a branch rather than wide. It will try to reach 
 
 I think it's just better to show this algorithm in application rather than explaining it. I already described all the essential details about DFS in the first few lines. So I'll write a solution to the leetcode problem 94 inorder traversal. This is one of the three basic binary tree searching algorithm that includes inorder, preorder, postorder traversal.
 
-```python
-def inorder(root: Optional[TreeNode]) -> List[int]:
+<div class="code-block">
+  <div class="code-tabs">
+    <ul>
+      <li>Python</li>
+      <li>Java</li>
+    </ul>
+  </div>
+
+  ```python
     # recursive dfs method
-    ans = []
-    def dfs(node):
-        if not node:
-            return
+    def inorder(root: Optional[TreeNode]) -> List[int]:
+        ans = []
+        def dfs(node):
+            if not node:
+                return
 
-        dfs(node.left)
-        ans.append(node.val)
-        dfs(node.right)
-    
-    dfs(root)
-    return ans
+            dfs(node.left)
+            ans.append(node.val)
+            dfs(node.right)
 
-inorder(root) # expected output: [4,2,6,5,7,1,3,9,8]
-```
+        dfs(root)
+        return ans
 
-I'll explain inorder traversal later below, but a brief rundown would be that it requires you to search through the left of a node, then the node itself and then the right side. It's important to distinguish between the whole tree and a node. Every node will go through these three states, though the left nodes will take priority in going first through these states and even in left, the furthermost left node will be the first one.
+    print(inorder(root)) # expected output: [4,2,6,5,7,1,3,9,8]
+  ```
+
+  ```java
+    class DFS {
+        public List<Integer> inorderTraversal(TreeNode root) {
+            List<Integer> ans = new ArrayList<>();
+            dfs(root, ans);
+            return ans;
+        }
+
+        private void createList(TreeNode node, List<Integer> ans) {
+            if (node == null) return;
+
+            dfs(node.left, ans);
+            ans.add(node.val);
+            dfs(node.right, ans);
+        }
+        
+        public static void main(String[] args) {
+            DFS dfs = new Dfs();
+            System.out.println(dfs.createList(root)) // expected output: [4,2,6,5,7,1,3,9,8]
+        } 
+    }
+
+  ```
+</div>
+
+I'll explain inorder traversal now, this algorithm requires you to input the tree into a list(array) in a certain order which is to search through the left of a node and input those, then the node itself and then the right side. It's important to distinguish between the whole tree and a node. Every node will go through these three states, though the left nodes will take priority in going first through these states and even in left, the furthermost left node will be the first one.
 
 You see, trying to find the furthermost left node requires us to go deep into the deep as far as possible. DFS does exactly that and so we use it here, as long as a node is valid, it keep going left until it encounters a null object meaning that's the end. It then goes back, appends the node itself as it has searched through the left side (the first state) and now it searches itself by appending to the list and then dive into the right side. 
 

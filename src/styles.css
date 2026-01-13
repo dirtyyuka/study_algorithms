@@ -201,7 +201,7 @@ footer p {
   font-size: 18px;
 }
 
-.algo-content p {
+.algo-content p, .katex-div {
   font-size: 18px;
 }
 
@@ -247,6 +247,13 @@ pre {
 
 .shiki {
   margin: 0;
+}
+
+/* katex md */
+.katex-div ul {
+  margin: 10px 0 10px 0;
+  padding-left: 0;
+  list-style-type: none;
 }
 
 /* Inline code */
@@ -356,7 +363,7 @@ pre code {
     line-height: 24px;
   }
 
-  .algo-content p, span {
+  .algo-content p, .katex-div {
     font-size: 16px;
   }
 
@@ -381,7 +388,7 @@ pre code {
     line-height: 22px;
   }
 
-  .algo-content p, span {
+  .algo-content p, .katex-div {
     font-size: 14px;
     line-height: 20px; 
   }
